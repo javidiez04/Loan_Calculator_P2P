@@ -1,7 +1,9 @@
 import pandas as pd
 import numpy as np
 
-def interest_giver (x,y):
+
+def interest_giver (y, x = "../Data/Zopa_data.csv"):
+    x = pd.read_csv(x)
     if y < 1000 or y > 15000:
         return "The loan amount should be between 1000 and 15000"
     elif y % 100 != 0:

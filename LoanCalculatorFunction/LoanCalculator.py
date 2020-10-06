@@ -1,9 +1,10 @@
 import pandas as pd
 import numpy as np
 
-def interest_giver (y, x = "../Data/Zopa_data2.csv", update = False):
+def interest_giver (y, update = False, x = "../Data/Zopa_data2.csv"):
     x = pd.read_csv(x)
-
+    y = int(y)
+    update = bool(update)
     #First we discard the values that are not regarded in the project
 
     if y < 1000 or y > 15000:
@@ -52,8 +53,10 @@ def interest_giver (y, x = "../Data/Zopa_data2.csv", update = False):
         Rate: {:.2f}%
         Monthly repayment: €{:.2f}
         Total repayment €{:.2f}""".format(y, rate, payment_per_month, total_payment))
+        return rate
 
 def reset_database(x):
+    x = bool(x)
     if x == True:
         p = pd.read_csv("../Data/Zopa_data2Copy.csv")
         p.to_csv("../Data/Zopa_data2.csv", index=False)
